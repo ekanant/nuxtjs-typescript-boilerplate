@@ -24,14 +24,13 @@
   </div>
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
-
-export default {
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
   components: {
-    Logo,
+    Logo: () => import('~/components/Logo.vue'),
   },
-}
+})
 </script>
 
 <style>

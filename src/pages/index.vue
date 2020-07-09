@@ -8,8 +8,15 @@
       <h2 class="subtitle">
         My divine Nuxt.js project
       </h2>
+      <div>
+        {{listTodos}}
+      </div>
       <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
+        <a
+          href="https://nuxtjs.org/"
+          target="_blank"
+          class="button--green"
+        >
           Documentation
         </a>
         <a
@@ -26,10 +33,20 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { getTodos, Todo } from '@/api/todo'
 export default Vue.extend({
   components: {
-    Logo: () => import('~/components/Logo.vue'),
+    Logo: () => import('@/components/Logo.vue')
   },
+  data () {
+    const listTodos:Todo[] = []
+    return {
+      listTodos
+    }
+  },
+  async created () {
+    this.listTodos = await getTodos()
+  }
 })
 </script>
 

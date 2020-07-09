@@ -1,7 +1,7 @@
 /* eslint-disable */
 import axios, { AxiosResponse } from 'axios'
 
-interface Todo {
+export interface Todo {
   userId: number;
   id: number;
   title: string;

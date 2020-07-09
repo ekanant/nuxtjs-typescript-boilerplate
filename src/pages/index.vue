@@ -6,10 +6,12 @@
         nuxtjs-typescript-boilerplate
       </h1>
       <h2 class="subtitle">
-        My divine Nuxt.js project
+        List to do example
       </h2>
-      <div>
-        {{listTodos}}
+      <div class="row m-0">
+        <div v-for="(todo, i) in listTodos" :key="todo.id" class="col-sm-6 text-left">
+          {{i+1}}. <label>{{todo.title}} <input v-model="todo.completed" type="checkbox"/></label>
+        </div>
       </div>
       <div class="links">
         <a

@@ -11,11 +11,13 @@
       <div style="margin-bottom: 1em;">
         <nuxt-link :to="localePath({name: 'index'})">home</nuxt-link>  | <nuxt-link :to="localePath({name: 'i18n'})">i18n</nuxt-link>
       </div>
-      <div class="row m-0">
-        <div v-for="(todo, i) in listTodos" :key="todo.id" class="col-sm-6 text-left">
-          {{i+1}}. <label>{{todo.title}} <input v-model="todo.completed" type="checkbox"/></label>
-        </div>
+      <div style="margin-bottom: 1em;">
+        <nuxt-link :to="switchLocalePath('en')">EN Locale</nuxt-link> | <nuxt-link :to="switchLocalePath('th')">TH Locale</nuxt-link>
       </div>
+      <h3>
+        <div v-t="'hello'"></div>
+        <div v-t="'hello_from_local'"></div>
+      </h3>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -38,19 +40,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { getTodos, Todo } from '@/api/todo'
 export default Vue.extend({
   components: {
     Logo: () => import('@/components/Logo.vue')
-  },
-  data () {
-    const listTodos:Todo[] = []
-    return {
-      listTodos
-    }
-  },
-  async created () {
-    this.listTodos = await getTodos()
   }
 })
 </script>
@@ -87,3 +79,13 @@ export default Vue.extend({
   padding-top: 15px;
 }
 </style>
+<i18n>
+{
+  "en": {
+    "hello_from_local": "Hello this from local file"
+  },
+  "th": {
+    "hello_from_local": "สวัสดี ข้อความนี้มาจาก local file"
+  }
+}
+</i18n>

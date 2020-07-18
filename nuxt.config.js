@@ -40,7 +40,38 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: [
+    [
+      'nuxt-i18n',
+      {
+        vueI18nLoader: true,
+        vueI18n: {
+          silentTranslationWarn: true
+        },
+        lazy: true,
+        langDir: 'locales/',
+        seo: false,
+        strategy: 'prefix_and_default',
+        defaultLocale: 'th',
+        vuex: {
+          syncLocale: true
+        },
+        locales: [
+          {
+            code: 'en',
+            iso: 'en-TH',
+            file: 'en-TH.js'
+          },
+          {
+            code: 'th',
+            iso: 'th-TH',
+            file: 'th-TH.js'
+          }
+        ],
+        detectBrowserLanguage: false
+      }
+    ]
+  ],
   /*
    ** Build configuration
    */
